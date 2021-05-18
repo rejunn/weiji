@@ -16,7 +16,7 @@ public interface UserMapper {
 	 * @return
 	 * @return: User
 	 */
-	 @Select("select u.* from user u where u.userid=#{id}")
+	 @Select("select u.* from user u where u.idcard=#{id}")
 	    User selectById(String id);
 	 /**
 	  * 根据身份证号获取用户
@@ -49,6 +49,6 @@ public interface UserMapper {
 	  */
 	 @Update("update "
 	 		+ User.TABLE_NAME
-	 		+"set name=#{name},phone=#{phone},birthdate=#{birthdate},address=#{address},modifytime=#{modifytime}")
+	 		+"set name=#{name},phone=#{phone},birthdate=#{birthdate},address=#{address},modifytime=#{modifytime} where idcard=#{idcard}")
 	 void update(User user);
 }

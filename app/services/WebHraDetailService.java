@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import play.libs.Codec;
-import utils.Variable;
+import utils.BizConstants;
 
 import com.aton.db.SessionFactory;
 
@@ -35,7 +35,8 @@ public class WebHraDetailService{
 			mapper.insert(webHra);
 			ss.commit();
 		}catch(Exception e){
-			log.warn("用户保存失败 id为"+webHra.idcard);
+			e.printStackTrace();
+			log.warn("体检数据保存失败 id为"+webHra.idcard);
 		}
 		finally {
             ss.close();

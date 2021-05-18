@@ -11,9 +11,10 @@ GET     /favicon.ico                            404
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public
 
-# Catch all
+POST	/wjcloud/heathdata						HeathDataController.heathData
+GET     /getUser								HeathDataController.getUser
+
+# Catch all 
 *       /{controller}/{action}                  {controller}.{action}
 
 
-POST	/wjcloud/heathdata						HeathDataController.heathData
-GET     /getUser/{userid}						HeathDataController.getUser

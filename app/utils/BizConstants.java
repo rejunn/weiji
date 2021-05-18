@@ -1,6 +1,6 @@
 package utils;
 
-public class Variable {
+public class BizConstants {
 	/**
 	 * 用户初始化密码
 	 */
@@ -13,4 +13,8 @@ public class Variable {
 	 * 设备上传的方式创建用户
 	 */
 	public final static String USER_CREATEWAY_UPLOAD="upload";
+	/**
+	 * 数据上传格式
+	 */
+	public final static String UTF_8="utf-8";
 }

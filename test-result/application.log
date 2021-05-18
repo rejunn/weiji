@@ -1,23 +1,23 @@
-24 三月 2016 14:23:49,813 INFO  ~ Starting E:\myTools\workspace\weiji
-24 三月 2016 14:23:50,579 WARN  ~ You're running Play! in DEV mode
-24 三月 2016 14:23:50,661 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
-24 三月 2016 14:24:02,367 WARN  ~ Bad pool size config, start 3 < min 10. Using 10 as start.
-24 三月 2016 14:24:02,447 INFO  ~ Connected to jdbc:mysql://localhost:3306/weiji?autoReconnect=true&useUnicode=true&characterEncoding=utf-8 for default
-24 三月 2016 14:24:02,899 INFO  ~ Application 'weiji' is now started !
-24 三月 2016 14:24:04,330 ERROR ~ 
+25 三月 2016 16:35:20,656 INFO  ~ Starting E:\myTools\workspace\weiji
+25 三月 2016 16:35:21,422 WARN  ~ You're running Play! in DEV mode
+25 三月 2016 16:35:21,500 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+25 三月 2016 16:35:32,464 WARN  ~ Bad pool size config, start 3 < min 10. Using 10 as start.
+25 三月 2016 16:35:32,554 INFO  ~ Connected to jdbc:mysql://localhost:3306/weiji?autoReconnect=true&useUnicode=true&characterEncoding=utf-8 for default
+25 三月 2016 16:35:33,161 INFO  ~ Application 'weiji' is now started !
+25 三月 2016 16:35:34,797 ERROR ~ 
 
-@6pg8bfb47
+@6pgg9o3n6
 Internal Server Error (500) for request GET /getUser
 
-Execution exception (In /app/models/User.java around line 251)
+Execution exception (In /app/models/User.java around line 243)
 ExceptionInInitializerError occured : null
 
 play.exceptions.JavaExecutionException
 	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:228)
 	at Invocation.HTTP Request(Play!)
 Caused by: java.lang.ExceptionInInitializerError
-	at models.User.findById(User.java:251)
-	at controllers.HeathDataController.getUser(HeathDataController.java:144)
+	at models.User.findById(User.java:243)
+	at controllers.HeathDataController.getUser(HeathDataController.java:181)
 	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:524)
 	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:475)
 	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:451)
@@ -75,8 +75,8 @@ Caused by: org.apache.ibatis.reflection.ReflectionException: Illegal overloaded 
 	at org.apache.ibatis.session.SqlSessionFactoryBuilder.build(SqlSessionFactoryBuilder.java:38)
 	at com.aton.db.SessionFactory.<init>(SessionFactory.java:41)
 	at com.aton.db.SessionFactory.<clinit>(SessionFactory.java:28)
-	at models.User.findById(User.java:251)
-	at controllers.HeathDataController.getUser(HeathDataController.java:144)
+	at models.User.findById(User.java:243)
+	at controllers.HeathDataController.getUser(HeathDataController.java:181)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -102,59 +102,159 @@ Caused by: org.apache.ibatis.reflection.ReflectionException: Illegal overloaded 
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
 	at java.lang.Thread.run(Unknown Source)
-24 三月 2016 14:24:33,559 ERROR ~ 
+25 三月 2016 16:36:23,761 ERROR ~ 
 
-@6pg8bfb48
-getUser.1 action not found
+@6pgg9o3n7
+Internal Server Error (500) for request GET /getUser
 
-Action not found
-Action getUser.1 could not be found. Error raised is Controller controllers.getUser not found
+Execution exception (In /app/models/User.java around line 96)
+PersistenceException occured :  ### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'u.userid' in 'where clause' ### The error may exist in models/mappers/UserMapper.java (best guess) ### The error may involve models.mappers.UserMapper.selectById-Inline ### The error occurred while setting parameters ### SQL: select u.* from user u where u.userid=? ### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'u.userid' in 'where clause'
 
-play.exceptions.ActionNotFoundException: Action getUser.1 not found
-	at play.mvc.ActionInvoker.getActionMethod(ActionInvoker.java:566)
-	at play.mvc.ActionInvoker.resolve(ActionInvoker.java:84)
+play.exceptions.JavaExecutionException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'u.userid' in 'where clause'
+### The error may exist in models/mappers/UserMapper.java (best guess)
+### The error may involve models.mappers.UserMapper.selectById-Inline
+### The error occurred while setting parameters
+### SQL: select u.* from user u where u.userid=?
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'u.userid' in 'where clause'
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:228)
 	at Invocation.HTTP Request(Play!)
-Caused by: java.lang.Exception: Controller controllers.getUser not found
-	... 3 more
-24 三月 2016 14:25:01,305 ERROR ~ 
+Caused by: org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'u.userid' in 'where clause'
+### The error may exist in models/mappers/UserMapper.java (best guess)
+### The error may involve models.mappers.UserMapper.selectById-Inline
+### The error occurred while setting parameters
+### SQL: select u.* from user u where u.userid=?
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'u.userid' in 'where clause'
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:26)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:111)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:102)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:66)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:68)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:52)
+	at com.sun.proxy.$Proxy14.selectById(Unknown Source)
+	at models.User.findById(User.java:96)
+	at controllers.HeathDataController.getUser(HeathDataController.java:181)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:524)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:475)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:451)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:446)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:160)
+	... 1 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'u.userid' in 'where clause'
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:389)
+	at com.mysql.jdbc.Util.getInstance(Util.java:372)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:980)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3835)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3771)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2435)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2582)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2535)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1911)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1203)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:59)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:73)
+	at org.apache.ibatis.executor.ReuseExecutor.doQuery(ReuseExecutor.java:57)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:267)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:137)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:96)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:77)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:108)
+	... 13 more
+25 三月 2016 16:37:45,915 ERROR ~ 
 
-@6pg8bfb49
-getUser.1 action not found
+@6pgg9o3n9
+Internal Server Error (500) for request GET /getUser
 
-Action not found
-Action getUser.1 could not be found. Error raised is Controller controllers.getUser not found
+Template not found (In /app/controllers/HeathDataController.java around line 183)
+The template HeathDataController/getUser.html does not exist.
 
-play.exceptions.ActionNotFoundException: Action getUser.1 not found
-	at play.mvc.ActionInvoker.getActionMethod(ActionInvoker.java:566)
-	at play.mvc.ActionInvoker.resolve(ActionInvoker.java:84)
+play.exceptions.TemplateNotFoundException: Template not found : HeathDataController/getUser.html
+	at play.mvc.Controller.renderTemplate(Controller.java:685)
+	at play.mvc.Controller.renderTemplate(Controller.java:656)
+	at play.mvc.Controller.render(Controller.java:713)
+	at controllers.HeathDataController.getUser(HeathDataController.java:183)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:524)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:475)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:451)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:446)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:160)
 	at Invocation.HTTP Request(Play!)
-Caused by: java.lang.Exception: Controller controllers.getUser not found
-	... 3 more
-24 三月 2016 14:25:04,053 ERROR ~ 
+25 三月 2016 16:38:44,535 WARN  ~ 123的身份证号不存在需注册
+25 三月 2016 16:38:44,540 WARN  ~ 用户保存失败 id为130654654738272746:123
+25 三月 2016 16:38:44,579 ERROR ~ 
 
-@6pg8bfb4a
-getUser.1 action not found
+@6pgg9o3na
+Internal Server Error (500) for request POST /wjcloud/heathdata
 
-Action not found
-Action getUser.1 could not be found. Error raised is Controller controllers.getUser not found
+Execution exception (In /app/controllers/HeathDataController.java around line 84)
+NullPointerException occured : null
 
-play.exceptions.ActionNotFoundException: Action getUser.1 not found
-	at play.mvc.ActionInvoker.getActionMethod(ActionInvoker.java:566)
-	at play.mvc.ActionInvoker.resolve(ActionInvoker.java:84)
+play.exceptions.JavaExecutionException
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:228)
 	at Invocation.HTTP Request(Play!)
-Caused by: java.lang.Exception: Controller controllers.getUser not found
-	... 3 more
-24 三月 2016 14:25:31,613 ERROR ~ 
+Caused by: java.lang.NullPointerException
+	at controllers.HeathDataController.heathData(HeathDataController.java:84)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:524)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:475)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:451)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:446)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:160)
+	... 1 more
+25 三月 2016 16:40:25,306 WARN  ~ 123的身份证号不存在需注册
+25 三月 2016 16:40:26,774 WARN  ~ 用户保存失败 id为130654654738272746:123
+25 三月 2016 16:40:50,150 ERROR ~ 
 
-@6pg8bfb4b
-getUser.1 action not found
+@6pgg9o3nb
+Internal Server Error (500) for request POST /wjcloud/heathdata
 
-Action not found
-Action getUser.1 could not be found. Error raised is Controller controllers.getUser not found
+Execution exception (In /app/controllers/HeathDataController.java around line 84)
+NullPointerException occured : null
 
-play.exceptions.ActionNotFoundException: Action getUser.1 not found
-	at play.mvc.ActionInvoker.getActionMethod(ActionInvoker.java:566)
-	at play.mvc.ActionInvoker.resolve(ActionInvoker.java:84)
+play.exceptions.JavaExecutionException
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:228)
 	at Invocation.HTTP Request(Play!)
-Caused by: java.lang.Exception: Controller controllers.getUser not found
-	... 3 more
+Caused by: java.lang.NullPointerException
+	at controllers.HeathDataController.heathData(HeathDataController.java:84)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:524)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:475)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:451)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:446)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:160)
+	... 1 more
+25 三月 2016 16:41:28,993 WARN  ~ 123的身份证号不存在需注册
+25 三月 2016 16:42:38,254 WARN  ~ 用户保存失败 id为130654654738272746:123
+25 三月 2016 16:42:38,282 ERROR ~ 
+
+@6pgg9o3nc
+Internal Server Error (500) for request POST /wjcloud/heathdata
+
+Execution exception (In /app/controllers/HeathDataController.java around line 84)
+NullPointerException occured : null
+
+play.exceptions.JavaExecutionException
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:228)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException
+	at controllers.HeathDataController.heathData(HeathDataController.java:84)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:524)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:475)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:451)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:446)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:160)
+	... 1 more
+25 三月 2016 16:45:12,993 WARN  ~ 123的身份证号不存在需注册
+25 三月 2016 16:45:15,577 WARN  ~ 用户保存失败 id为130654654738272746:123
+25 三月 2016 16:45:15,580 WARN  ~ 体检报告为空
+25 三月 2016 16:57:38,077 WARN  ~ 123的身份证号不存在需注册
+25 三月 2016 16:57:40,779 WARN  ~ 用户保存失败 id为130654654738272746:123
+25 三月 2016 16:57:40,782 WARN  ~ 体检报告为空
+25 三月 2016 16:58:54,994 WARN  ~ 123的身份证号不存在需注册
+25 三月 2016 16:59:10,651 WARN  ~ 用户保存失败 id为130654654738272746:123
+25 三月 2016 16:59:10,655 WARN  ~ 体检报告为空
+25 三月 2016 16:59:25,841 WARN  ~ 123的身份证号不存在需注册
+25 三月 2016 16:59:25,845 WARN  ~ 用户保存失败 id为130654654738272746:123
+25 三月 2016 16:59:25,845 WARN  ~ 体检报告为空
+25 三月 2016 17:08:19,220 WARN  ~ 123的身份证号不存在需注册
+25 三月 2016 17:08:23,297 WARN  ~ 用户保存失败 id为130654654738272746:123
+25 三月 2016 17:08:23,301 WARN  ~ 体检报告为空

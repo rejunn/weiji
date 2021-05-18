@@ -24,7 +24,7 @@ import play.libs.Codec;
 import play.libs.Files;
 import services.WebHraDetailService;
 import utils.UUIDString;
-import utils.Variable;
+import utils.BizConstants;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -80,6 +80,10 @@ public class HeathDataController extends BaseController {
 			}
 			
 			//保存附件，目录为/public/upload
+			if(pdf==null){
+				log.warn("体检报告为空");
+				renderFailedJson(ReturnCode.ErrorCode, "体检报告为空");
+			}
 			String uuid=UUIDString.create();
 			String fileName = pdf.getName();
 			String fileExtName = fileName.substring(fileName.lastIndexOf('.')+1, fileName.length());
@@ -161,7 +165,7 @@ public class HeathDataController extends BaseController {
 				return false;
 			}
 			//创建方式为：设备上传
-			newuser.createway=Variable.USER_CREATEWAY_UPLOAD;
+			newuser.createway=BizConstants.USER_CREATEWAY_UPLOAD;
 			try{
 				newuser.create();
 			}
@@ -178,9 +182,10 @@ public class HeathDataController extends BaseController {
 		 * @return: void
 		 */
 		public static void getUser(String userid){
-			User user=User.findById(userid);
-			renderArgs.put("user", user);
-			render();
+			User user=User.findById("130846273627");
+			//renderArgs.put("user", user);
+			//render();
+			System.out.println(user.name);
 		}
 
 }
