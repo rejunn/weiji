@@ -172,4 +172,44 @@ public class User implements java.io.Serializable {
 	            ss.close();
 	        }	
 		}
+		/**
+		 * 修改密码
+		 *
+		 * @Title: resetPassword 
+		 * @return: void
+		 */
+		public void resetPassword() {
+			// TODO Auto-generated method stub
+			 SqlSession ss = SessionFactory.getSqlSession();
+			 try{
+				 UserMapper mapper = ss.getMapper(UserMapper.class);
+				 this.password=Codec.hexMD5(BizConstants.USER_PASS_INIT+this.salt);
+				 mapper.rePassword(this);
+			 }catch(Exception e){
+				 e.printStackTrace();
+				 log.warn("修改密码失败"+this.idcard+":"+this.name);
+			 }finally{
+				 ss.close();
+			 }
+		}
+		/**
+		 * 修改用户密码
+		 *
+		 * @Title: editPassword 
+		 * @return: void
+		 */
+		public void editPassword() {
+			// TODO Auto-generated method stub
+			SqlSession ss = SessionFactory.getSqlSession();
+			try{
+				 UserMapper mapper = ss.getMapper(UserMapper.class);
+				 this.password=Codec.hexMD5(this.password+this.salt);
+				 mapper.rePassword(this);
+			 }catch(Exception e){
+				 e.printStackTrace();
+				 log.warn("修改密码失败"+this.idcard+":"+this.name);
+			 }finally{
+				 ss.close();
+			 }
+		}
 }

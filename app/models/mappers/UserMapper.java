@@ -48,7 +48,18 @@ public interface UserMapper {
 	  * @return: void
 	  */
 	 @Update("update "
-	 		+ User.TABLE_NAME
-	 		+"set name=#{name},phone=#{phone},birthdate=#{birthdate},address=#{address},modifytime=#{modifytime} where idcard=#{idcard}")
+	 		+ User.TABLE_NAME 
+	 		+" set name=#{name},phone=#{phone},birthdate=#{birthdate},address=#{address},modifytime=#{modifytime} where idcard=#{idcard}")
 	 void update(User user);
+	 /**
+	  * 重置密码
+	  *
+	  * @Title: update 
+	  * @param user
+	  * @return: void
+	  */
+	 @Update("update "
+		 		+ User.TABLE_NAME 
+		 		+" set password=#{password} where idcard=#{idcard}")
+		 void rePassword(User user);
 }

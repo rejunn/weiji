@@ -25,6 +25,7 @@ import play.libs.Files;
 import services.WebHraDetailService;
 import utils.UUIDString;
 import utils.BizConstants;
+import utils.ValidatePassword;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -33,6 +34,15 @@ import com.aton.db.SessionFactory;
 
 public class HeathDataController extends BaseController {
 	private static final Logger log = LoggerFactory.getLogger(HeathDataController.class);
+		/**
+		 * HRA数据上传接口
+		 *
+		 * @Title: heathData 
+		 * @param userinfo 用户信息
+		 * @param detail 体检数据
+		 * @param pdf 体检报告
+		 * @return: void
+		 */
 		public static void heathData(String userinfo,String detail, File pdf){
 			//String json=params.get("json");
 			if(StringUtils.isEmpty(userinfo)){
@@ -72,6 +82,9 @@ public class HeathDataController extends BaseController {
 				}
 			}
 			else{
+//				if(!ValidatePassword.isPassword(newuser,user)){
+//					renderFailedJson(ReturnCode.ErrorCode, "用户名或密码不正确");
+//				}
 				boolean isUpdate=doUpdate(newuser);
 				if(!isUpdate){
 					log.warn("用户信息更新失败");
@@ -127,7 +140,7 @@ public class HeathDataController extends BaseController {
 			catch(Exception e){
 				return false;
 			}
-			return false;
+			return true;
 		}
 		/**
 		 * 更新用户
@@ -183,9 +196,54 @@ public class HeathDataController extends BaseController {
 		 */
 		public static void getUser(String userid){
 			User user=User.findById("130846273627");
-			//renderArgs.put("user", user);
-			//render();
-			System.out.println(user.name);
+			renderArgs.put("user", user);
+			render();
+		}
+		/**
+		 * 重置用户密码
+		 *
+		 * @Title: resetPassword 
+		 * @param idCard 用户身份证号
+		 * @return: void
+		 */
+		public static void resetPassword(String idCard){
+			User user=getCurrentUser();
+			if("admin".equals(user.name)){
+				renderFailedJson(ReturnCode.ErrorCode, "登录用户非管理员用户");	
+			}
+			User reUser=User.findById(idCard);
+			if(reUser==null){
+				renderFailedJson(ReturnCode.ErrorCode, "用户不存在");	
+			}
+			try{
+				reUser.resetPassword();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		/**
+		 * 修改密码
+		 *
+		 * @Title: editPassword 
+		 * @param idCard 身份证号
+		 * @param newPassword 新密码
+		 * @return: void
+		 */
+		public static void editPassword(String idCard,String newPassword){
+			User user=getCurrentUser();
+			if("admin".equals(user.name)){
+				renderFailedJson(ReturnCode.ErrorCode, "登录用户非管理员用户");	
+			}
+			User reUser=User.findById(idCard);
+			if(reUser==null){
+				renderFailedJson(ReturnCode.ErrorCode, "用户不存在");	
+			}
+			try{
+				reUser.password=newPassword;
+				reUser.editPassword();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 		}
 
 }
