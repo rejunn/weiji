@@ -127,7 +127,7 @@ public class User implements java.io.Serializable {
 		public void create() {
 			// TODO Auto-generated method stub
 			
-			SqlSession ss = SessionFactory.getSqlSessionWithoutAutoCommit();
+			SqlSession ss = SessionFactory.getSqlSession();
 			try{
 				UserMapper mapper = ss.getMapper(UserMapper.class);
 				//用户密码为空时，初始化用户密码
@@ -158,7 +158,7 @@ public class User implements java.io.Serializable {
 		 */
 		public void update() {
 			// TODO Auto-generated method stub
-			SqlSession ss = SessionFactory.getSqlSessionWithoutAutoCommit();
+			SqlSession ss = SessionFactory.getSqlSession();
 			try{
 				UserMapper mapper = ss.getMapper(UserMapper.class);
 				Date date=new Date();

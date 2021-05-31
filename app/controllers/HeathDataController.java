@@ -98,12 +98,12 @@ public class HeathDataController extends BaseController {
 				renderFailedJson(ReturnCode.ErrorCode, "体检报告为空");
 			}
 			String uuid=UUIDString.create();
-			String fileName = pdf.getName();
-			String fileExtName = fileName.substring(fileName.lastIndexOf('.')+1, fileName.length());
-			if(!"pdf".equalsIgnoreCase(fileExtName)){
-				log.warn("用户体检报告不是pdf格式");
-				renderFailedJson(ReturnCode.ErrorCode, "用户体检报告不是pdf格式");
-			}
+//			String fileName = pdf.getName();
+//			String fileExtName = fileName.substring(fileName.lastIndexOf('.')+1, fileName.length());
+//			if(!"pdf".equalsIgnoreCase(fileExtName)){
+//				log.warn("用户体检报告不是pdf格式");
+//				renderFailedJson(ReturnCode.ErrorCode, "用户体检报告不是pdf格式");
+//			}
 			String filePath = "public/upload/"+newuser.idcard+"/" + uuid+".pdf";
 			Files.copy(pdf, Play.getFile(filePath));
 			//保存体检数据
