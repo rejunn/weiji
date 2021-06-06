@@ -19,18 +19,29 @@ import com.aton.db.SessionFactory;
  * @date: 2016年3月24日 下午5:03:18
  */
 public class WebHraDetail implements java.io.Serializable {
-	private static final Logger log = LoggerFactory.getLogger(WebHraDetail.class);
+	//private static final Logger log = LoggerFactory.getLogger(WebHraDetail.class);
 	public static final String TABLE_NAME="webhra_detail";
 	@Id
 	public  String	did;
 	public	String	idcard;
-	public	String	huiyuanziliao_tizhong;
+	public	String	packageid;
+	public	String	deviceid;
+	public	String	devicemodel;
+	public	String	pdfname;
+	public  Date  	createtime;
 	public	String	huiyuanziliao_jianchariqi;
 	public	String	huiyuanziliao_jianchashijian;
-	public	String	huiyuanziliao_yaowei;
 	public	String	huiyuanziliao_songjianyishi;
 	public	String	huiyuanziliao_nianling;
-	public	String	huiyuanziliao_shengao;
+	public	String	rtc_shengao;
+	public	String	rtc_tizhong;
+	public	String	rtc_bmi;
+	public	String	rtc_gaoya;
+	public	String	rtc_diya;
+	public	String	rtc_xinlv;
+	public	String	rtc_xueyang;
+	public	String	rtc_zhifanghanliang;
+	public	String	rtc_jichudaixie;
 	public	String	lizifenxi_na;
 	public	String	lizifenxi_jia;
 	public	String	lizifenxi_lv;
@@ -246,21 +257,22 @@ public class WebHraDetail implements java.io.Serializable {
 	public	String	tuijian_yinshi;
 	public	String	yisheng_zonghefenxipingu_panduan;
 	public	String	zhiliao_jianyi;
-	public	String	pdf_url;
-	public  Date  	createtime;
 	
 	public WebHraDetail(){
 		
 	}
-	
-	
-	public WebHraDetail(String did, String idcard,
-			String huiyuanziliao_tizhong, String huiyuanziliao_jianchariqi,
-			String huiyuanziliao_jianchashijian, String huiyuanziliao_yaowei,
+
+	public WebHraDetail(String did, String idcard, String packageid,
+			String deviceid, String devicemodel, String pdfname,
+			Date createtime, String huiyuanziliao_jianchariqi,
+			String huiyuanziliao_jianchashijian,
 			String huiyuanziliao_songjianyishi, String huiyuanziliao_nianling,
-			String huiyuanziliao_shengao, String lizifenxi_na,
-			String lizifenxi_jia, String lizifenxi_lv, String lizifenxi_mei,
-			String lizifenxi_gai, String lizifenxi_lin, String lizifenxi_tie,
+			String rtc_shengao, String rtc_tizhong, String rtc_bmi,
+			String rtc_gaoya, String rtc_diya, String rtc_xinlv,
+			String rtc_xueyang, String rtc_zhifanghanliang,
+			String rtc_jichudaixie, String lizifenxi_na, String lizifenxi_jia,
+			String lizifenxi_lv, String lizifenxi_mei, String lizifenxi_gai,
+			String lizifenxi_lin, String lizifenxi_tie,
 			String shenjingdizhi_wuqingsean, String shenjingdizhi_duobaan,
 			String shenjingdizhi_erchafenan,
 			String shenjingdizhi_yixuandanjian, String suanjianpingheng_ph,
@@ -412,18 +424,28 @@ public class WebHraDetail implements java.io.Serializable {
 			String yishi_tuijiandeshiwu, String yishi_pengtiaofangfa,
 			String rentichengfenfenxi, String yishi_yishijianyi,
 			String yishi_xiangguanyishi, String tuijian_yinshi,
-			String yisheng_zonghefenxipingu_panduan, String zhiliao_jianyi,
-			String pdf_url, Date createtime) {
+			String yisheng_zonghefenxipingu_panduan, String zhiliao_jianyi) {
 		super();
 		this.did = did;
 		this.idcard = idcard;
-		this.huiyuanziliao_tizhong = huiyuanziliao_tizhong;
+		this.packageid = packageid;
+		this.deviceid = deviceid;
+		this.devicemodel = devicemodel;
+		this.pdfname = pdfname;
+		this.createtime = createtime;
 		this.huiyuanziliao_jianchariqi = huiyuanziliao_jianchariqi;
 		this.huiyuanziliao_jianchashijian = huiyuanziliao_jianchashijian;
-		this.huiyuanziliao_yaowei = huiyuanziliao_yaowei;
 		this.huiyuanziliao_songjianyishi = huiyuanziliao_songjianyishi;
 		this.huiyuanziliao_nianling = huiyuanziliao_nianling;
-		this.huiyuanziliao_shengao = huiyuanziliao_shengao;
+		this.rtc_shengao = rtc_shengao;
+		this.rtc_tizhong = rtc_tizhong;
+		this.rtc_bmi = rtc_bmi;
+		this.rtc_gaoya = rtc_gaoya;
+		this.rtc_diya = rtc_diya;
+		this.rtc_xinlv = rtc_xinlv;
+		this.rtc_xueyang = rtc_xueyang;
+		this.rtc_zhifanghanliang = rtc_zhifanghanliang;
+		this.rtc_jichudaixie = rtc_jichudaixie;
 		this.lizifenxi_na = lizifenxi_na;
 		this.lizifenxi_jia = lizifenxi_jia;
 		this.lizifenxi_lv = lizifenxi_lv;
@@ -639,7 +661,6 @@ public class WebHraDetail implements java.io.Serializable {
 		this.tuijian_yinshi = tuijian_yinshi;
 		this.yisheng_zonghefenxipingu_panduan = yisheng_zonghefenxipingu_panduan;
 		this.zhiliao_jianyi = zhiliao_jianyi;
-		this.pdf_url = pdf_url;
-		this.createtime = createtime;
 	}
+
 }

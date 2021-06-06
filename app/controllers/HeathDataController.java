@@ -130,7 +130,7 @@ public class HeathDataController extends BaseController {
 			// TODO Auto-generated method stub
 			//设置pdf名称
 			if(StringUtils.isNotEmpty(filename)){
-				webHra.pdf_url=filename;
+				webHra.pdfname=filename;
 			}
 			//设置身份证号
 			webHra.idcard=userid;
