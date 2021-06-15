@@ -91,7 +91,7 @@ public class HeathDataController extends BaseController {
 					renderFailedJson(ReturnCode.ErrorCode, "用户信息更新失败");
 				}
 			}
-			
+			doSaveReport(webHra,newuser.idcard,"111");
 			//保存附件，目录为/public/upload
 			if(pdf==null){
 				log.warn("体检报告为空");

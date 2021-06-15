@@ -14,10 +14,10 @@ public interface WebHraDetailMapper {
 	 * @return: void
 	 */
 	@Insert("insert into webhra_detail " +
-           "(did,idcard,pdfname,packageid ,deviceid,devicemodel,createtime,"
+           "(did,idcard,pdfname,packageid,deviceid,devicemodel,createtime,"
            + "huiyuanziliao_jianchariqi,huiyuanziliao_jianchashijian,"
            + "huiyuanziliao_songjianyishi,huiyuanziliao_nianling,"
-           + "rtc_shengao,rtc_tizhong,rtc_bmi,rtc_gaoya.rtc_diya,rtc_xinlv,rtc_xueyang,"
+           + "rtc_shengao,rtc_tizhong,rtc_bmi,rtc_gaoya,rtc_diya,rtc_xinlv,rtc_xueyang,"
            + "rtc_zhifanghanliang,rtc_jichudaixie,"
            + "lizifenxi_na,lizifenxi_jia,lizifenxi_lv,lizifenxi_mei,lizifenxi_gai,"
            + "lizifenxi_lin,lizifenxi_tie,"
@@ -95,11 +95,11 @@ public interface WebHraDetailMapper {
            +"yishi_pengtiaofangfa,rentichengfenfenxi,yishi_yishijianyi,yishi_xiangguanyishi,"
            +"tuijian_yinshi,yisheng_zonghefenxipingu_panduan,zhiliao_jianyi)"
      +"values"
-           +"(#{did},#{idcard},#{pdfname},#{packageid},#{deviceid},#{devicemodel},#{createtime}"
+           +"(#{did},#{idcard},#{pdfname},#{packageid},#{deviceid},#{devicemodel},#{createtime},"
            +"#{huiyuanziliao_jianchariqi},#{huiyuanziliao_jianchashijian},"
            +"#{huiyuanziliao_songjianyishi},#{huiyuanziliao_nianling},"
-           +"#{rtc_tizhong},#{rtc_shengao},#{rtc_bmi},#{rtc_gaya},#{rtc_diya},"
-           + "#{rtc_xinlv},#{rtc_zhifanghanliang},#{rtc_jichudaixie},"
+           +"#{rtc_shengao},#{rtc_tizhong},#{rtc_bmi},#{rtc_gaoya},#{rtc_diya},#{rtc_xinlv},#{rtc_xueyang},"
+           +"#{rtc_zhifanghanliang},#{rtc_jichudaixie},"
            +"#{lizifenxi_na},#{lizifenxi_jia},#{lizifenxi_lv},"
            +"#{lizifenxi_mei},#{lizifenxi_gai},#{lizifenxi_lin},#{lizifenxi_tie},"
            +"#{shenjingdizhi_wuqingsean},#{shenjingdizhi_duobaan},#{shenjingdizhi_erchafenan},"

@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import play.libs.Codec;
 import utils.BizConstants;
+import utils.UUIDString;
 
 import com.aton.db.SessionFactory;
 
@@ -32,6 +33,7 @@ public class WebHraDetailService{
 		SqlSession ss = SessionFactory.getSqlSessionWithoutAutoCommit();
 		try{
 			WebHraDetailMapper mapper = ss.getMapper(WebHraDetailMapper.class);
+			webHra.did=UUIDString.create();
 			mapper.insert(webHra);
 			ss.commit();
 		}catch(Exception e){

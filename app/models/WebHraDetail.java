@@ -2,11 +2,13 @@ package models;
 
 import java.util.Date;
 
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import models.mappers.WebHraDetailMapper;
 
 import org.apache.ibatis.session.SqlSession;
+import org.hibernate.annotations.GenericGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
